@@ -137,24 +137,6 @@ class PizzaDirector  {
                             .setPrice(10)
                             .build();
   }
-
-  makeCustom(
-    sauce: boolean,
-    cheese: boolean,
-    toppings: string[],
-    price: number,
-  ): Pizza {
-    this.pizzaBuilder.setCheese(cheese)
-                     .setSauce(sauce)
-                     .setSlices(8)
-                     .setPrice(price);
-    
-    for (const topping of toppings) {
-      this.pizzaBuilder.addTopping(topping);
-    }
-
-    return this.pizzaBuilder.build();
-  }
 }
 
 const pizzaBuilder = new ConcretePizzaBuilder();
@@ -172,11 +154,3 @@ const director = new PizzaDirector(pizzaBuilder);
 
 const cheese = director.makeCheese();
 console.log(cheese);
-
-const custom = director.makeCustom(
-  true,
-  false,
-  ['pepperoni', 'mushrooms'],
-  15,
-);
-console.log(custom);
